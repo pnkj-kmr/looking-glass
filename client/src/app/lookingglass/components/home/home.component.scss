@@ -1,0 +1,65 @@
+.home-page {
+  .container {
+    font-size: 0.9rem;
+    width: 80rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+
+    .query-form {
+      margin: 0 auto;
+      width: 80rem;
+      max-width: 80rem;
+
+      mat-form-field {
+        min-width: 15rem;
+        max-width: 15rem;
+        max-height: 5rem;
+        width: 100%;
+      }
+
+      .form-el2 {
+        min-width: 15rem;
+        max-width: 15rem;
+        max-height: 10rem;
+        width: 100%;
+        .form-refresh-btn {
+          padding-bottom: 0.5rem;
+        }
+      }
+
+      .row {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .form-el {
+        align-self: flex-end;
+      }
+
+      .form-btn {
+        margin-top: 3rem;
+      }
+    }
+
+    .query-result {
+      margin: 2rem auto;
+      width: 80rem;
+      max-width: 80rem;
+
+      mat-card {
+        background: rgba(0, 0, 0, 0.04);
+        margin: 0 auto;
+        width: 100%;
+        min-height: 20rem;
+        max-height: fit-content;
+      }
+
+      .footer {
+        color: grey;
+        font-size: 0.8rem;
+        padding: 0.5rem 0;
+      }
+    }
+  }
+}

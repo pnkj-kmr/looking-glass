@@ -1,0 +1,23 @@
+
+.DS_Store
+**.zip
+*.log*
+*.gz
+log
+lg
+# ui
+client/package-lock.json
+client/.angular
+client/.vscode
+client/db.json
+node_modules/
+# api
+server/conf/data/
+server/templates/
+server/static/
+server/main
+server/lookingglass
+server/.vscode
+# build 
+release/conf/data
+

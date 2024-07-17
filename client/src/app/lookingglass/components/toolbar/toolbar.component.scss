@@ -1,0 +1,42 @@
+.nav-spacer {
+  flex: 1 1 auto;
+}
+.title-img {
+  max-width: 8rem;
+  max-height: 3rem;
+}
+
+.narbar-main {
+  max-height: 3rem;
+  height: 3rem !important;
+  position: fixed;
+  z-index: 9999;
+}
+
+.navbar2 {
+  padding-top: 3rem;
+  width: 100rem;
+
+  .navbar-sub {
+    display: flex;
+    padding: 0.2rem 1rem;
+    box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.2),
+      0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.19);
+    font-size: 0.9rem;
+    max-height: 2rem;
+    height: 2rem;
+
+    .navbar-title {
+      margin: auto;
+    }
+
+    .nav-spacer {
+      flex: 1 1 auto;
+    }
+    .navbar-version {
+      padding-left: 0.3rem;
+      font-size: 0.6rem;
+      margin-top: auto;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.ip-page {
+  .container {
+    font-size: 0.9rem;
+    width: 80rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+
+    .title {
+      display: flex;
+      margin: 0 auto;
+      justify-content: space-between;
+      .access_query {
+        margin: auto 0;
+        font-size: 0.8rem;
+      }
+    }
+
+    .table-container {
+      font-size: 0.8rem;
+      padding-top: 1rem;
+      margin: 0 auto;
+      mat-form-field {
+        width: 100%;
+      }
+
+      .add-button {
+        margin-right: 1rem;
+      }
+
+      .mat-mdc-table {
+        width: 100%;
+        max-height: 5rem;
+        overflow: auto;
+      }
+
+      .mat-column-name {
+        height: 4rem;
+      }
+    }
+  }
+}

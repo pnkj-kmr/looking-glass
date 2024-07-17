@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="narbar-main">
+  <img class="title-img" alt="L O G O" src="assets/images/logo.png" />
+  <span class="nav-spacer"></span>
+  <button
+    mat-button
+    class="example-icon"
+    aria-label="Example icon-button with heart icon"
+    (click)="navigate('/')"
+  >
+    HOME
+  </button>
+  <button
+    mat-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    (click)="navigate('/ip')"
+  >
+    INFO
+  </button>
+</mat-toolbar>
+<nav class="navbar2">
+  <div class="navbar-sub">
+    <span class="navbar-title">
+      <b>{{ title }}</b>
+      <span class="navbar-version">{{ version }}</span>
+    </span>
+    <span class="nav-spacer"></span>
+  </div>
+</nav>

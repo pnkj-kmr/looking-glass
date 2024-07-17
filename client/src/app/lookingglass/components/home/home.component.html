@@ -1,0 +1,103 @@
+<div class="home-page">
+  <div class="container">
+    <section class="query-form">
+      <form [formGroup]="queryForm" (ngSubmit)="onFormSubmit()">
+        <div class="row">
+          <mat-form-field appearance="fill" class="form-el">
+            <mat-label>Source Host</mat-label>
+            <input
+              matInput
+              formControlName="src"
+              [matAutocomplete]="auto"
+              required
+            />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let x of srcHostsOptions | async" [value]="x">
+                {{ x.host }}
+              </mat-option>
+            </mat-autocomplete>
+            <!-- <mat-select formControlName="src" required>
+              <mat-option *ngFor="let x of srcHosts" [value]="x.ip">
+                {{ x.host }}
+              </mat-option>
+            </mat-select> -->
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="form-el">
+            <mat-label>Protocol</mat-label>
+            <mat-select formControlName="proto" required>
+              <mat-option *ngFor="let x of protocols" [value]="x.id">
+                {{ x.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="form-el">
+            <mat-label>Destination IP / Host</mat-label>
+            <input
+              matInput
+              placeholder="Ex. 127.0.0.1"
+              formControlName="dst"
+              required
+            />
+          </mat-form-field>
+          <div class="form-el2">
+            <span>
+              <span #query_canvas></span>
+              <button
+                class="form-refresh-btn"
+                mat-button
+                color="primary"
+                type="button"
+                (click)="refreshCaptcha()"
+              >
+                REFRESH
+              </button>
+            </span>
+            <mat-form-field appearance="fill">
+              <mat-label>Captcha</mat-label>
+              <input matInput formControlName="captcha" required />
+              <mat-error *ngIf="captchaCheck">
+                <strong>required</strong> Invalid!
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <button
+            class="form-btn"
+            mat-raised-button
+            type="reset"
+            (click)="onFormReset()"
+          >
+            RESET
+          </button>
+          <button
+            class="form-btn"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="processing"
+          >
+            QUERY NOW
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="query-result">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>QUERY RESULT</mat-card-title>
+          <mat-card-subtitle>{{ status }}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="resultError">
+            <span color="warn">Error</span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <br />
+        <mat-card-content>
+          <div>
+            <span *ngFor="let x of result">{{ x }}<br /></span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <footer class="footer">© 2024 All rights reserved.</footer>
+    </section>
+  </div>
+</div>
