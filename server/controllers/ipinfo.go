@@ -1,6 +1,9 @@
 package controllers
 
 import (
+	"errors"
+	"strings"
+
 	"github.com/pnkj-kmr/looking-glass/repos"
 	"github.com/pnkj-kmr/looking-glass/repos/jsondb"
 	"github.com/pnkj-kmr/looking-glass/utils"
@@ -59,6 +62,9 @@ func AddIPConfig(data []byte) error {
 	if err := ip.FromJSON(data); err != nil {
 		return err
 	}
+	if err := checkExtraSpaces(ip); err != nil {
+		return err
+	}
 	newPwd, err := encryptAES(ip.Pwd)
 	if err != nil {
 		return err
@@ -100,6 +106,13 @@ func EditIPConfig(key string, data []byte) error {
 	if err != nil {
 		return err
 	}
+	var ip repos.IPInfo
+	if err := ip.FromJSON(data); err != nil {
+		return err
+	}
+	if err := checkExtraSpaces(ip); err != nil {
+		return err
+	}
 	// existing entry from db
 	ex, err := collection.Get(key)
 	if err != nil {
@@ -109,10 +122,6 @@ func EditIPConfig(key string, data []byte) error {
 	_ = exip.FromJSON(ex)
 	// delete existing from db
 	if err := collection.Delete(key); err != nil {
-		return err
-	}
-	var ip repos.IPInfo
-	if err := ip.FromJSON(data); err != nil {
 		return err
 	}
 	newPwd, err := encryptAES(ip.Pwd)
@@ -192,6 +201,20 @@ func SetAccessData(t int) error {
 	}
 	if err := collection.Insert("access", dataBytes); err != nil {
 		return err
+	}
+	return nil
+}
+
+func checkExtraSpaces(ip repos.IPInfo) (err error) {
+	_space := " "
+	if strings.Contains(ip.IP, _space) {
+		return errors.New("IP Address, extra space not allowed.")
+	} else if strings.Contains(ip.Host, _space) {
+		return errors.New("Hostname, extra space not allowed.")
+	} else if strings.Contains(ip.Usr, _space) {
+		return errors.New("Username, extra space not allowed.")
+	} else if strings.Contains(ip.Pwd, _space) {
+		return errors.New("Password, extra space not allowed.")
 	}
 	return nil
 }

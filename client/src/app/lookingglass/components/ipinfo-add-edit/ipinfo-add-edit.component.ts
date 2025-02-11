@@ -54,7 +54,9 @@ export class IpinfoAddEditComponent implements OnInit {
             this._dialogRef.close(true);
           },
           error: (err: any) => {
-            console.log(err);
+            // console.log(err);
+            this._core.messageAlert(`${err?.error?.error || "Record failed"}`, "ERROR");
+            this._dialogRef.close(true);
           },
         });
       } else {
@@ -64,7 +66,9 @@ export class IpinfoAddEditComponent implements OnInit {
             this._dialogRef.close(true);
           },
           error: (err: any) => {
-            console.log(err);
+            // console.log(err);
+            this._core.messageAlert(`${err?.error?.error || "Record failed"}`, "ERROR");
+            this._dialogRef.close(true);
           },
         });
       }
