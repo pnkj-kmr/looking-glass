@@ -1,5 +1,5 @@
 rm_dir:
-	rm -rf dist/client && rm -rf ../release/static/*
+	rm -rf dist/client 
 
 build:
-	make rm_dir && npm run build && cp -rf dist/client/* ../release/static/
+	make rm_dir && npm run build && mv dist/client/* ../static/

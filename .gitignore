@@ -12,12 +12,10 @@ client/.vscode
 client/db.json
 node_modules/
 # api
-server/conf/data/
-server/templates/
-server/static/
-server/main
-server/lookingglass
-server/.vscode
+conf/data
+main
+lookingglass
+.vscode
 # build 
-release/conf/data
+dist
 
