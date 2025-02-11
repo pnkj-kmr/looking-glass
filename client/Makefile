@@ -3,3 +3,7 @@ rm_dir:
 
 build:
 	make rm_dir && npm run build && mv dist/client/* ../static/
+
+run:
+	npm start
+	
